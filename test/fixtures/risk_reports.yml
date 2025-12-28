@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contract: one
+  total_risks: 1
+  risk_score: 1.5
+  summary: 
+
+two:
+  contract: two
+  total_risks: 1
+  risk_score: 1.5
+  summary: 
