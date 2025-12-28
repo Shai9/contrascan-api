@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  contract_type: 1
+  status: MyString
+  raw_text: MyText
+  normalized_text: MyText
+  structure: MyString
+
+two:
+  title: MyString
+  contract_type: 1
+  status: MyString
+  raw_text: MyText
+  normalized_text: MyText
+  structure: MyString
