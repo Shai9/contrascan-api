@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contract: one
+  reference: MyString
+  text: MyText
+  position_index: 1
+
+two:
+  contract: two
+  reference: MyString
+  text: MyText
+  position_index: 1
