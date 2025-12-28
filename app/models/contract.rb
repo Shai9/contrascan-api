@@ -5,5 +5,6 @@ class Contract < ApplicationRecord
   }
 
   has_many :clauses, dependent: :destroy
+  has_one_attched :file
 end
 
