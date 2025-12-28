@@ -1,0 +1,2 @@
+class RiskPattern < ApplicationRecord
+end

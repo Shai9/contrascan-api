@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category: MyString
+  severity: MyString
+  keywords: MyText
+  applies_to: 1
+  ai_label: MyString
+  user_facing_explanation: MyText
+
+two:
+  name: MyString
+  category: MyString
+  severity: MyString
+  keywords: MyText
+  applies_to: 1
+  ai_label: MyString
+  user_facing_explanation: MyText
