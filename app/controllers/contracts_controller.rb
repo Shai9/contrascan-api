@@ -6,9 +6,13 @@ class ContractsController < ApplicationController
       status: "uploaded"
     )
 
+    Contracts::ExtractText.call(contract)
+    Contracts::DetectContractType.call(contract)
+
     render json: {
       id: contract.id,
-      status: contract.status
+      status: contract.status,
+      contract_type: contract.contract_type
     }, status: :created
   end
 end
