@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clause: one
+  risk_pattern: one
+  confidence: 1.5
+  explanation: MyText
+
+two:
+  clause: two
+  risk_pattern: two
+  confidence: 1.5
+  explanation: MyText
