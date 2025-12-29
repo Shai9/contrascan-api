@@ -12,4 +12,4 @@ test:
   database: contrascan_test
 
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  url: <%= ENV["${{ Postgres.DATABASE_URL }}"] %>
