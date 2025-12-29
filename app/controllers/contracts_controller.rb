@@ -15,4 +15,11 @@ class ContractsController < ApplicationController
       contract_type: contract.contract_type
     }, status: :created
   end
+  def report
+    contract = Contract.find(params[:id])
+
+    report = Contracts::GenerateRiskReport.call(contract)
+
+    render json: report
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_28_192441) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_29_185934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -49,6 +49,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_28_192441) do
     t.integer "position_index"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
     t.index ["contract_id"], name: "index_clauses_on_contract_id"
   end
 
@@ -84,6 +85,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_28_192441) do
     t.text "user_facing_explanation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "contract_type"
   end
 
   create_table "risk_reports", force: :cascade do |t|

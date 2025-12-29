@@ -1,10 +1,9 @@
 class RiskPattern < ApplicationRecord
-  enum applies_to: {
-    general: 0,
-    terms_and_conditions: 1,
-    both: 2
-  }
+  enum :severity, { low: 0, medium: 1, high: 2 }
+  enum :contract_type, { general: 0, terms_and_conditions: 1 }
 
-  serialize :keywords, Array
+  serialize :keywords, coder: JSON
+
+  validates :name, :severity, :contract_type, presence: true
 end
 

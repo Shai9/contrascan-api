@@ -1,9 +1,15 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+RiskPattern.create!(
+  name: "Unilateral Termination",
+  description: "The company may terminate the service without notice or cause.",
+  severity: :high,
+  contract_type: :terms_and_conditions,
+  keywords: ["terminate at any time", "without notice", "sole discretion"]
+)
+
+RiskPattern.create!(
+  name: "Limitation of Liability",
+  description: "Limits liability to a small amount or excludes damages.",
+  severity: :high,
+  contract_type: :terms_and_conditions,
+  keywords: ["limit liability", "not liable", "maximum extent permitted"]
+)

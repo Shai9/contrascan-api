@@ -1,25 +1,24 @@
-# README
+## Architecture Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ContraScan is built as a deterministic analysis pipeline:
 
-Things you may want to cover:
+1. File ingestion (ActiveStorage)
+2. Text extraction (PDF/DOCX aware)
+3. Clause parsing (structure-preserving)
+4. Rule-based risk detection
+5. Evidence-backed risk reporting (JSON API)
 
-* Ruby version
+AI augmentation is intentionally layered on top of a rules first core to ensure explainability and legal defensibility.
 
-* System dependencies
+## Why Rules First?
 
-* Configuration
+Most contract analysis tools rely entirely on LLMs, which introduces:
+- hallucinations
+- lack of explainability
+- weak legal defensibility
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# contrascan-api
+ContraScan uses AI only as an augmentation layer.
+All detected risks are backed by:
+- explicit clauses
+- known risk patterns
+- deterministic matching
