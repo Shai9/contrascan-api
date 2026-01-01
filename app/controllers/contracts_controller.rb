@@ -1,20 +1,27 @@
 class ContractsController < ApplicationController
   def create
     contract = Contract.create!(
-      title: params.require(:title),
-      file:  params.require(:file),
-      status: "uploaded"
+      contract_params.merge(status: :pending)
     )
 
-    Contracts::ExtractText.call(contract)
-    Contracts::DetectContractType.call(contract)
+    AnalyzeContractJob.perform_later(contract.id)
 
     render json: {
       id: contract.id,
-      status: contract.status,
-      contract_type: contract.contract_type
-    }, status: :created
+      status: contract.status
+    }, status: :accepted
   end
+
+  def show
+      contract = Contract.find(params[:id])
+
+      render json: {
+        id: contract.id,
+        status: contract.status
+      }
+  end
+
+
   def report
     contract = Contract.find(params[:id])
 
