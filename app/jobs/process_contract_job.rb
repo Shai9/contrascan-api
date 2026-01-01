@@ -11,7 +11,7 @@ class ProcessContractJob < ApplicationJob
     Contracts::DetectContractType.call(contract)
     Contracts::Extractors::Clauses.call(contract)
     Contracts::MatchRisks.call(contract)
-    Contracts::GenerateReport.call(contract)
+    Contracts::GenerateRiskReport.call(contract)
 
     contract.completed!
   rescue => e
