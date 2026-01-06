@@ -1,8 +1,5 @@
-Rails.application.routes.draw do
-  resources :contracts, only: [:create, :show] do
-    member do
-      get :report
-    end
+namespace :api do
+  namespace :v1 do
+    resources :contracts, only: [:create, :show]
   end
 end
-
