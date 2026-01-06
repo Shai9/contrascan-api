@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_01_01_222514) do
+ActiveRecord::Schema[8.0].define(version: 2026_01_05_214506) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -50,13 +50,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_01_222514) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
+    t.text "summary"
     t.index ["contract_id"], name: "index_clauses_on_contract_id"
   end
 
   create_table "contracts", force: :cascade do |t|
     t.string "title"
     t.integer "contract_type"
-    t.string "status"
+    t.integer "status", default: 0
     t.text "raw_text"
     t.text "normalized_text"
     t.string "structure"
@@ -87,6 +88,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_01_222514) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "contract_type"
+    t.text "description"
   end
 
   create_table "risk_reports", force: :cascade do |t|
@@ -96,6 +98,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_01_222514) do
     t.jsonb "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "overall_risk"
     t.index ["contract_id"], name: "index_risk_reports_on_contract_id"
   end
 
