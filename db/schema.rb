@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_01_05_214506) do
+ActiveRecord::Schema[8.0].define(version: 2026_01_08_205407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -73,6 +73,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_05_214506) do
     t.text "explanation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "matched_keywords", default: []
     t.index ["clause_id"], name: "index_risk_matches_on_clause_id"
     t.index ["risk_pattern_id"], name: "index_risk_matches_on_risk_pattern_id"
   end
@@ -80,8 +81,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_05_214506) do
   create_table "risk_patterns", force: :cascade do |t|
     t.string "name"
     t.string "category"
-    t.string "severity"
-    t.text "keywords"
+    t.integer "severity", default: 1, null: false
     t.integer "applies_to"
     t.string "ai_label"
     t.text "user_facing_explanation"
@@ -89,6 +89,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_05_214506) do
     t.datetime "updated_at", null: false
     t.integer "contract_type"
     t.text "description"
+    t.jsonb "keywords", default: []
+    t.index ["keywords"], name: "index_risk_patterns_on_keywords", using: :gin
   end
 
   create_table "risk_reports", force: :cascade do |t|

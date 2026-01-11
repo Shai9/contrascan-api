@@ -11,6 +11,14 @@ class ProcessContractJob < ApplicationJob
     Contracts::DetectContractType.call(contract)
     Contracts::Extractors::Clauses.call(contract)
     Contracts::MatchRisks.call(contract)
+
+    contract.clauses
+            .joins(:risk_matches)
+            .distinct
+            .each do |clause|
+      Contracts::SummarizeClause.call(clause)
+    end
+
     Contracts::GenerateRiskReport.call(contract)
 
     contract.completed!

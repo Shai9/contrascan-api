@@ -1,9 +1,15 @@
 class RiskPattern < ApplicationRecord
-  enum :severity, { low: 0, medium: 1, high: 2 }
-  enum :contract_type, { general: 0, terms_and_conditions: 1 }
+  enum :contract_type, {
+    terms_and_conditions: 0,
+    privacy_policy: 1
+  }
 
-  serialize :keywords, coder: JSON
+  enum :severity, {
+    low: 0,
+    medium: 1,
+    high: 2
+  }
 
-  validates :name, :severity, :contract_type, presence: true
+  has_many :risk_matches, dependent: :destroy
+  has_many :clauses, through: :risk_matches
 end
-

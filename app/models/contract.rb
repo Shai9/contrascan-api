@@ -1,8 +1,6 @@
 class Contract < ApplicationRecord
-  enum :document_type, {
-    general: 0,
-    terms_and_conditions: 1
-  }
+  has_many :clauses, dependent: :destroy
+  has_one :risk_report, dependent: :destroy
 
   enum :status, {
     pending: 0,
@@ -11,6 +9,8 @@ class Contract < ApplicationRecord
     failed: 3
   }
 
-  has_many :clauses, dependent: :destroy
-  has_one_attached :file
+  enum :document_type, {
+    terms_and_conditions: 0,
+    privacy_policy: 1
+  }
 end
